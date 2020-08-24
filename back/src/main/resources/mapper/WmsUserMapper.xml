@@ -29,9 +29,9 @@
 
     <insert id="addWms">
         INSERT wmsuser(wmsName,job,realName,email,phone,fixed_phone,
-        login_times,deptId,roleId,remarks,password)
+        login_times,deptId,roleId,remarks,password,create_time)
         VALUE(#{wmsName},#{job},#{realName},#{email},#{phone},#{fixed_phone},
-        #{login_times},#{deptId},#{roleId},#{remarks},#{password})
+        #{login_times},#{deptId},#{roleId},#{remarks},#{password},now())
     </insert>
 
     <update id="updateLoginTime">
