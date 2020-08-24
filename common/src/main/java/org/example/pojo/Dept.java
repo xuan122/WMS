@@ -1,11 +1,14 @@
 package org.example.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Dept implements java.io.Serializable {
     private int id;
     private String deptName;
     private String superiorDept;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date create_time;
 
     public int getId() {
