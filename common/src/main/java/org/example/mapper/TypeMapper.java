@@ -9,5 +9,5 @@ import java.util.List;
 public interface TypeMapper {
      List<Type> selectList();
 
-     int insert();
+     int insert(Type type);
 }

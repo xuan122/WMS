@@ -6,8 +6,8 @@
         SELECT t1.*,t2.statusName AS parentName FROM TYPE t1,TYPE t2 WHERE t1.statusType='PRO_CLASS' AND t1.parentId=t2.id
     </select>
 
-    <insert id="insert">
-
+    <insert id="insert" parameterType="org.example.pojo.Type">
+        INSERT INTO TYPE VALUES(DEFAULT,#{statusCode},#{statusType},#{statusName},#{parentId},SYSDATE(),#{creationBy},#{modifyDate},#{modifyBy},#{remarks})
     </insert>
 
 </mapper>
