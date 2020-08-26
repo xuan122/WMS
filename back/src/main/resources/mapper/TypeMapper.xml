@@ -10,4 +10,26 @@
         INSERT INTO TYPE VALUES(DEFAULT,#{statusCode},#{statusType},#{statusName},#{parentId},SYSDATE(),#{creationBy},#{modifyDate},#{modifyBy},#{remarks})
     </insert>
 
+    <delete id="deleteById">
+        DELETE FROM TYPE WHERE id=#{id}
+    </delete>
+
+    <update id="modifyById" parameterType="org.example.pojo.Type">
+        UPDATE type
+  <set>
+    <if test="statusName !=null and statusName !=''">
+        statusName = #{statusName},
+    </if>
+    <if test="parentId !=0 ">
+        parentId = #{parentId},
+    </if>
+    mofidyDate = SYSDATE(),
+    modifyBy = #{modifyBy},
+   <if test="remarks !=null and remarks !=''">
+       remarks= 'remarks'
+   </if>
+    </set>
+      where id = #{id}
+    </update>
+
 </mapper>

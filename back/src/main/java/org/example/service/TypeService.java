@@ -21,4 +21,12 @@ public class TypeService {
         return typeMapper.insert(type);
     }
 
+    public int deleteById(int id){
+        return typeMapper.deleteById(id);
+    }
+
+    public int modifyById(Type type){
+        return typeMapper.modifyById(type);
+    }
+
 }

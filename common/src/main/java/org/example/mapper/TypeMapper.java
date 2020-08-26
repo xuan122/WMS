@@ -10,4 +10,8 @@ public interface TypeMapper {
      List<Type> selectList();
 
      int insert(Type type);
+
+     int deleteById(int id);
+
+     int modifyById(Type type);
 }
