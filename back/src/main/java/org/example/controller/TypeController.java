@@ -34,7 +34,6 @@ public class TypeController {
         responseData.setStatus(200);
         responseData.setMessage("查询成功！！");
         responseData.setData(typeService.selectByCodeAndName(statusCode,statusName));
-        System.out.println("------------------"+typeService.selectByCodeAndName(statusCode,statusName));
         return responseData;
     }
 

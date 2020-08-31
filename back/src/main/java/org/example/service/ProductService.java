@@ -14,16 +14,25 @@ public class ProductService {
     ProductMapper productMapper;
 
    public List<Product> selectProduct(){
-        return productMapper.selectProduct();
+
+       return productMapper.selectProduct();
+    }
+
+    public List<Product> conditionQuery(String productCode,String productName){
+
+       return productMapper.conditionQuery(productCode,productName);
     }
 
     public int insertPro(Product product){
+
        return productMapper.insertPro(product);
     }
     public int modifyPro(Product product){
+
        return productMapper.modifyPro(product);
     }
     public int deleteById(int id){
+
        return productMapper.deleteById(id);
     }
 }

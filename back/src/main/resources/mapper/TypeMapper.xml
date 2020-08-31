@@ -7,13 +7,13 @@
     </select>
 
     <select id="selectByCodeAndName"  resultType="org.example.pojo.Type">
-        SELECT *FROM TYPE
+        SELECT * FROM TYPE
         <where>
            <if test="statusCode!=null and statusCode!=''">
-               statusCode like '%${statusCode}%'
+               statusCode like concat('%',#{statusCode},'%')
            </if>
             <if test="statusName!=null and statusName!=''">
-                AND statusName like '%${statusName}%'
+                AND statusName like concat('%',#{statusName},'%')
             </if>
         </where>
     </select>

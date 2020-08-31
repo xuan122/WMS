@@ -5,6 +5,18 @@
         select *from carrier
     </select>
 
+    <select id="queryByCodeAndName" resultType="org.example.pojo.Carrier">
+        select *from carrier
+        <where>
+            <if test="carrierCode!=null and carrierCode!=''">
+                carrierCode like concat('%',#{carrierCode},'%')
+            </if>
+            <if test="carrierName!=null and carrierName!=''">
+              and  carrierName like concat('%',#{carrierName},'%')
+            </if>
+        </where>
+    </select>
+
     <insert id="insertCarrier" parameterType="org.example.pojo.Carrier">
         INSERT INTO carrier VALUES(DEFAULT,#{carrierCode},#{carrierName},#{remarks})
     </insert>

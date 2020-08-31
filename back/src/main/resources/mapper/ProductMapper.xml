@@ -5,6 +5,18 @@
          SELECT *FROM product
     </select>
 
+    <select id="conditionQuery" resultType="org.example.pojo.Product">
+        SELECT *FROM product
+        <where>
+            <if test="productCode!=null and productCode!=''">
+                productCode like concat('%',#{productCode},'%')
+            </if>
+            <if test="productName!=null and productName!=''">
+                and productName like concat('%',#{productName},'%')
+            </if>
+        </where>
+    </select>
+
     <insert id="insertPro" parameterType="org.example.pojo.Product">
         INSERT INTO product
             (`productId`,

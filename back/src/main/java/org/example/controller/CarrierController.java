@@ -28,6 +28,16 @@ public class CarrierController {
         return responseData;
     }
 
+    @RequestMapping(value = "/queryByCodeAndName",method = RequestMethod.GET)
+    @ApiOperation(value = "按条件查询承运商")
+    public Object queryByCodeAndName(String carrierCode,String carrierName){
+        ResponseData responseData = new ResponseData();
+        responseData.setStatus(200);
+        responseData.setMessage("查询成功");
+        responseData.setData(carrierService.queryByCodeAndName(carrierCode,carrierName));
+        return responseData;
+    }
+
     @RequestMapping(value = "/addCarrier",method = RequestMethod.GET)
     @ApiOperation(value = "添加承运商")
     public Object addCarrier(Carrier carrier){

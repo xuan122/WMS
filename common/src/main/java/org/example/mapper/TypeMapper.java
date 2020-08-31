@@ -10,7 +10,7 @@ import java.util.List;
 public interface TypeMapper {
      List<Type> selectList();
 
-     List<Type> selectByCodeAndName(@Param("statusName") String statusName,@Param("statusCode") String statusCode);
+     List<Type> selectByCodeAndName(@Param("statusCode") String statusCode,@Param("statusName") String statusName);
 
      int insert(Type type);
 

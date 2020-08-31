@@ -19,6 +19,17 @@ public class ProductController {
     @Resource
     private ProductService productService;
 
+    @RequestMapping(value = "/conditionGet",method = RequestMethod.GET)
+    @ApiOperation(value = "条件查询产品列表")
+    public Object conditionQuery(String productCode,String productName){
+        List<Product> pList=productService.conditionQuery(productCode,productName);
+        ResponseData responseData = new ResponseData();
+        responseData.setStatus(200);
+        responseData.setMessage("查询成功！");
+        responseData.setData(pList);
+        return responseData;
+    }
+
     @RequestMapping(value = "/getList",method = RequestMethod.GET)
     @ApiOperation(value = "查询产品列表")
     public Object selectList(){

@@ -17,6 +17,11 @@ public class CarrierService {
             return carrierMapper.getCarrierList();
     }
 
+    public List<Carrier> queryByCodeAndName(String carrierCode,String carrierName){
+
+        return carrierMapper.queryByCodeAndName(carrierCode,carrierName);
+    }
+
     public int insertCarrier(Carrier carrier){
         return carrierMapper.insertCarrier(carrier);
     }
