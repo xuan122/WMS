@@ -17,6 +17,10 @@ public class TypeService {
         return typeMapper.selectList();
     }
 
+    public List<Type> selectByCodeAndName(String statusName,String statusCode){
+        return typeMapper.selectByCodeAndName(statusName,statusCode);
+    }
+
     public int insert(Type type){
         return typeMapper.insert(type);
     }

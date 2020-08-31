@@ -6,7 +6,6 @@ import org.example.pojo.Type;
 import org.example.service.TypeService;
 import org.example.vo.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +24,17 @@ public class TypeController {
         responseData.setStatus(200);
         responseData.setMessage("查询成功！！");
         responseData.setData(typeService.selectList());
-        System.out.println(typeService.selectList().get(0).getCreationDate());
+        return responseData;
+    }
+
+    @ApiOperation(value = "条件查询分类")
+    @RequestMapping(value = "/queryType",method = RequestMethod.GET)
+    public Object selectByCodeAndName(String statusCode,String statusName){
+        ResponseData responseData=new ResponseData();
+        responseData.setStatus(200);
+        responseData.setMessage("查询成功！！");
+        responseData.setData(typeService.selectByCodeAndName(statusCode,statusName));
+        System.out.println("------------------"+typeService.selectByCodeAndName(statusCode,statusName));
         return responseData;
     }
 

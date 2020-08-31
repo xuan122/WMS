@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.example.mapper.ProductMapper">
+    <select id="selectProduct" resultType="org.example.pojo.Product">
+         SELECT *FROM product
+    </select>
+
+    <insert id="insertPro" parameterType="org.example.pojo.Product">
+        INSERT INTO product
+            (`productId`,
+             `productName`,
+             `productCode`,
+             `contractorCode`,
+             `internalCode`,
+             `productSpecifications`,
+             `productType`,
+             `unitId`,
+             `unitPrice`,
+             `packingType`,
+             `weight`,
+             `upWarning`,
+             `downWarning`,
+             `providerId`,
+             `creationDate`,
+             `creationBy`)
+VALUES (DEFAULT,
+        #{productName},
+        #{productCode},
+        #{contractorCode},
+        #{internalCode},
+        #{productSpecifications},
+        #{productType},
+        #{unitId},
+        #{unitPrice},
+        #{packingType},
+        #{weight},
+        #{upWarning},
+        #{downWarning},
+        #{providerId},
+        SYSDATE(),
+        #{creationBy})
+    </insert>
+    <update id="modifyPro" parameterType="org.example.pojo.Product">
+    UPDATE product
+    <set>
+       <if test="productName!=null and productName!=''">
+           productName = #{productName},
+       </if>
+        <if test="productCode!=null and productCode!=0">
+            productCode = #{productCode},
+        </if>
+        <if test="contractorCode!=null and contractorCode!=0">
+            contractorCode = #{contractorCode},
+        </if>
+        <if test="internalCode!=null and internalCode!=''">
+            internalCode = #{internalCode},
+        </if>
+        <if test="productSpecifications!=null and productSpecifications!=''">
+            productSpecifications = #{productSpecifications},
+        </if>
+        <if test="productType!=0">
+            productType = #{productType},
+        </if>
+        <if test="unitId!=0">
+            unitId = #{unitId},
+        </if>
+        <if test="unitPrice!=0.0">
+            unitPrice = #{unitPrice},
+        </if>
+        <if test="packingType!=0">
+            packingType = #{packingType},
+        </if>
+        <if test="weight!=0">
+            weight = #{weight},
+        </if>
+        <if test="upWarning!=0">
+            upWarning = #{upWarning},
+        </if>
+        <if test="downWarning!=0">
+            downWarning = #{downWarning},
+        </if>
+        <if test="providerId!=0">
+            providerId = #{providerId},
+        </if>
+        modifyDate = SYSDATE(),
+        modifyBy = #{modifyBy}
+    </set>
+    <where>
+    productId = #{productId};
+    </where>
+    </update>
+    <delete id="deleteById" parameterType="int">
+        DELETE FROM product WHERE productId=#{productId}
+    </delete>
+</mapper>
