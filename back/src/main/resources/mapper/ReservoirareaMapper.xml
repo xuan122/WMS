@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.ReservoirareaMapper">
+    <select id="showReservoirarea" resultType="org.example.pojo.Reservoirarea">
+        SELECT * FROM `reservoirarea` AS re ,`storehouse` AS s,`type` AS t WHERE re.areaType= t.`id` AND re.storeHouseId =s.`id`
+        <if test="areaCode != null and areaCode !=''">
+            and  re.areaCode like concat ('%',#{areaCode},'%')
+        </if>
+        <if test="areaName != null and areaName !=''">
+            and re.areaName like concat ('%',#{areaName},'%')
+        </if>
+        <if test="storeHouseId!= 0">
+            and re.storeHouseId =#{storeHouseId}
+        </if>
+        limit #{page},#{pageSize}
+    </select>
+
+    <select id="getReservoirareaById"  resultType="org.example.pojo.Reservoirarea">
+        select * from Reservoirarea where id =#{id}
+    </select>
+    <insert id="addReservoirarea">
+        INSERT INTO `reservoirarea`(`areaCode`,`storeHouseId`,`areaName`,`areaType`,`disable`,`defaults`,creationDate,creationBy)
+        VALUES(#{areaCode},#{storeHouseId},#{areaName},#{areaType},#{disable},#{defaults},now(),#{creationBy})
+    </insert>
+    <update id="updateReservoirarea">
+       UPDATE reservoirarea SET areaName=#{areaName},storeHouseId =#{storeHouseId},areaType=#{areaType},`disable`=#{disable},
+        defaults=#{defaults}, modifyDate=NOW(),modifyBy=#{modifyBy} WHERE id = #{id}
+    </update>
+    <delete id="deleteReservoirarea">
+        delete from reservoirarea where id = #{id}
+    </delete>
+    <select id="defaultReservoirarea" resultType="org.example.pojo.Reservoirarea">
+        SELECT * FROM `reservoirarea` WHERE storeHouseId =#{storeHouseId} AND defaults =1
+    </select>
+</mapper>

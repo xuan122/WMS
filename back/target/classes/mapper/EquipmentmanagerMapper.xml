@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.EquipmentmanagerMapper">
+    <select id="showEquipmentmanager" resultType="org.example.pojo.Equipmentmanager">
+        SELECT * FROM Equipmentmanager WHERE 1=1
+        <if test="equipmentCode != null and equipmentCode !=''">
+            and  equipmentCode like concat ('%',#{equipmentCode},'%')
+        </if>
+        <if test="equipmentName != null and equipmentName !=''">
+            and equipmentName like concat ('%',#{equipmentName},'%')
+        </if>
+        limit #{page},#{pageSize}
+    </select>
+    <select id="getEquipmentmanagerById"  resultType="org.example.pojo.Equipmentmanager">
+        select * from Equipmentmanager where id =#{id}
+    </select>
+    <insert id="addEquipmentmanager">
+        INSERT INTO equipmentmanager(`equipmentCode`,`equipmentName`,`authorization`,`authorizationIdentifier`,`type`,`remarks`)
+        VALUES(#{equipmentCode},#{equipmentName},#{authorization},#{authorizationIdentifier},#{type},#{remarks})
+    </insert>
+    <update id="updateEquipmentmanager">
+        UPDATE equipmentmanager SET `equipmentCode`=#{equipmentCode},`equipmentName`=#{equipmentName},
+        `authorization`=#{authorization},`authorizationIdentifier`=#{authorizationIdentifier},`type`=#{type},`remarks`=#{remarks} WHERE id = #{id}
+    </update>
+    <delete id="deleteEquipmentmanager">
+        delete from equipmentmanager where id = #{id}
+    </delete>
+</mapper>

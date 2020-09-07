@@ -6,8 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+<<<<<<< HEAD
         <module name="back" />
         <module name="common" />
+=======
+        <module name="common" />
+        <module name="back" />
+>>>>>>> dd1282c... first commit
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

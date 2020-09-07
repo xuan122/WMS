@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.UnitMapper">
+    <select id="showUnit" resultType="org.example.pojo.Unit">
+        select * from unit where unitCode like concat ('%',#{unitCode},'%') and unitName like concat ('%',#{unitName},'%')
+    </select>
+    <select id="getUnitById"  resultType="org.example.pojo.Unit">
+        select * from unit where unitId =#{unitId}
+    </select>
+    <insert id="addUnit">
+        insert unit(unitCode,unitName)values(#{unitCode},#{unitName})
+    </insert>
+    <update id="updateUnit">
+        update unit set unitCode =#{unitCode},unitName=#{unitName} where unitId =#{unitId}
+    </update>
+    <delete id="deleteUnit">
+        delete from unit where unitId = #{unitId}
+    </delete>
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.WmsUserMapper">
+    <select id="loginWmsUser" resultType="org.example.pojo.WmsUser">
+        select * from wmsuser where wmsName = #{wmsName} and password = #{password}
+    </select>
+    <select id="showWms" resultType="org.example.pojo.WmsUser">
+        SELECT w.id,w.`wmsName`,w.`job`,w.realName,w.`email`,w.`phone`,r.`roleName`,d.`deptName`,w.`fixed_phone`,w.`create_time`,w.`login_times`,w.`create_time`,w.`remarks`,w.`roleId`,w.`deptId`  FROM wmsuser w,role r,dept d WHERE w.`roleId` = r.`id` AND w.`deptId` = d.`id`
+            <if test="wmsName != null and wmsName !=''">
+                and w.`wmsName` like concat ('%',#{wmsName},'%')
+            </if>
+            <if test="job != null and job!=''">
+                and w.job like concat ('%',#{job},'%')
+            </if>
+            <if test="deptId != 0">
+                and w.deptId = #{deptId}
+            </if>
+            <if test="roleId != 0">
+                and w.roleId = #{roleId}
+            </if>
+         limit #{page},#{pageSize}
+    </select>
+
+    <update id="updateWmsPassword">
+        update wmsuser set password = #{password} where id = #{id}
+    </update>
+
+    <insert id="addWms">
+        INSERT wmsuser(wmsName,job,realName,email,phone,fixed_phone,
+        login_times,deptId,roleId,remarks,password,create_time)
+        VALUE(#{wmsName},#{job},#{realName},#{email},#{phone},#{fixed_phone},
+        #{login_times},#{deptId},#{roleId},#{remarks},#{password},now())
+    </insert>
+
+    <update id="updateLoginTime">
+        update wmsuser set login_times=login_times+1 where id = #{id}
+    </update>
+    <update id="updateWmsUser">
+        UPDATE wmsuser SET wmsName=#{wmsName},job='',realName=#{realName},phone=#{phone},fixed_phone=#{fixed_phone},
+        `deptId`=#{deptId},`roleId`=#{roleId},`email`=#{email},`modifyDate`=now() where id = #{id}
+    </update>
+    <select id="getWmsUser" resultType="org.example.pojo.WmsUser">
+        select * from wmsuser where id = #{id}
+    </select>
+    <delete id="deleteWms">
+        delete from wmsuser where id =#{id}
+    </delete>
+
+</mapper>
