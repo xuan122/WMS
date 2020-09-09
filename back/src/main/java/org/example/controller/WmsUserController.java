@@ -1,14 +1,11 @@
 package org.example.controller;
 
 
-<<<<<<< HEAD
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-=======
 import io.swagger.annotations.*;
->>>>>>> dd1282c... first commit
 import org.example.pojo.WmsUser;
 import org.example.service.WmsUserService;
 import org.example.util.MD5;
@@ -19,11 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-<<<<<<< HEAD
-@Api(value = "用户管理控制器类")
-=======
 @Api(value = "用户管理控制器类",description = "用户管理控制器类")
->>>>>>> dd1282c... first commit
 public class WmsUserController {
 
 @Autowired
@@ -150,21 +143,12 @@ private WmsUserService wmsUserService;
         return responseData;
     }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> dd1282c... first commit
     @ApiOperation(value = "根据id查询用户信息")
     @RequestMapping(value = "/getWmsUser",method = RequestMethod.GET)
     public ResponseData getWmsUser(int id){
         ResponseData responseData = new ResponseData();
         try {
             WmsUser wmsUser = wmsUserService.getWmsUser(id);
-<<<<<<< HEAD
-
-=======
->>>>>>> dd1282c... first commit
             if (wmsUser != null) {
                 responseData.setStatus(200);
                 responseData.setMessage("查询成功");

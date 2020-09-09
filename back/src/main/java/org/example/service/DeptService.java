@@ -1,9 +1,6 @@
 package org.example.service;
 
-<<<<<<< HEAD
-=======
 import org.apache.ibatis.annotations.Param;
->>>>>>> dd1282c... first commit
 import org.example.mapper.DeptMapper;
 import org.example.mapper.RoleMapper;
 import org.example.pojo.Dept;
@@ -15,17 +12,12 @@ import java.util.List;
 
 @Service
 public class DeptService {
-<<<<<<< HEAD
     @Resource
     private DeptMapper deptMapper;
 
     public List<Dept> showDept(){
         return deptMapper.showDept();
     }
-=======
-
-    @Resource
-    private DeptMapper deptMapper;
 
     public List<Dept> showDept(String deptName, String remarks){
         return deptMapper.showDept(deptName,remarks);
@@ -47,5 +39,4 @@ public class DeptService {
         return deptMapper.deleteDept(id);
     }
 
->>>>>>> dd1282c... first commit
 }

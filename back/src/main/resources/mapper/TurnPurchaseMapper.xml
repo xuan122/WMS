@@ -7,7 +7,7 @@
     </insert>
 
 
-    <select id="turnList" resultType="org.example.mapper.TurnPurchaseMapper">
+    <select id="turnList" resultType="org.example.pojo.TurnPurchase">
        SELECT tp.turnCode,p.purchaseCode,pr.productCode,pr.productName,pr.productSpecifications,(SELECT unitName FROM unit u WHERE u.unitId=pr.unitId) AS unitName,pr.unitPrice,tp.count,tp.totalPrice,pro.providerName,p.type
 FROM turnpurchase tp,purchase p,purchaselist pl,product pr,provider pro
 WHERE tp.purchaseId=p.id AND pl.purchaseId=p.id AND pl.productId=pr.productId AND pro.providerId=p.providerId

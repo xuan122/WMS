@@ -10,38 +10,24 @@ import org.example.service.RoleService;
 import org.example.vo.ResponseData;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-<<<<<<< HEAD
-=======
 import org.springframework.web.bind.annotation.RequestParam;
->>>>>>> dd1282c... first commit
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-<<<<<<< HEAD
-@Api(value = "部门管理类")
-=======
 @Api(value = "部门管理类",description ="部门管理类")
->>>>>>> dd1282c... first commit
 public class DeptController {
     @Resource
     private DeptService deptService;
 
     @ApiOperation(value = "查询所有部门")
     @RequestMapping(value = "/showDept",method = RequestMethod.GET)
-<<<<<<< HEAD
-    public ResponseData<WmsUser> showDept() {
-        ResponseData responseData = new ResponseData();
-        try {
-            List<Dept> list = deptService.showDept();
-=======
     public ResponseData<WmsUser> showDept(@RequestParam(defaultValue = "",required=false)String deptName, @RequestParam(defaultValue = "",required=false)String remarks) {
         ResponseData responseData = new ResponseData();
         try {
             List<Dept> list = deptService.showDept(deptName,remarks);
->>>>>>> dd1282c... first commit
             responseData.setStatus(200);
             responseData.setMessage("查询成功");
             responseData.setData(list);
@@ -51,8 +37,6 @@ public class DeptController {
         return responseData;
     }
 
-<<<<<<< HEAD
-=======
     @ApiOperation(value = "根据id查询部门信息")
     @RequestMapping(value = "/getDeptId",method = RequestMethod.GET)
     public ResponseData getDeptId(int id){
@@ -131,7 +115,5 @@ public class DeptController {
         }
         return responseData;
     }
-
->>>>>>> dd1282c... first commit
 
 }

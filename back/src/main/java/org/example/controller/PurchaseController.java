@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@Api(value = "采购管理")
+@Api(value = "采购管理",description = "采购管理类")
 public class PurchaseController {
 //
     @Autowired
@@ -109,7 +109,7 @@ public class PurchaseController {
         return responseData;
     }
 
-    @RequestMapping(value = "/getturn")
+    @RequestMapping(value = "/getturn",method = RequestMethod.GET)
     @ApiOperation(value = "采购退货列表")
     public Object turnList(){
         List<TurnPurchase>  tlist=turnPurchaseService.turnList();

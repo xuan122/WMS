@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@Api(value = "产品管理")
+@Api(value = "产品管理",description = "产品管理类")
 public class ProductController {
 
     @Resource

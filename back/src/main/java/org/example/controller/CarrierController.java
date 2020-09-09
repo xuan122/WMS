@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Api(value = "承运商管理类")
+@Api(value = "承运商管理类",description = "承运管理类")
 public class CarrierController {
 //
     @Autowired

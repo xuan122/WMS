@@ -19,11 +19,7 @@ import javax.validation.constraints.Null;
 import java.util.List;
 
 @RestController
-<<<<<<< HEAD
-@Api(value = "角色管理类")
-=======
 @Api(value = "角色管理类",description = "角色管理类")
->>>>>>> dd1282c... first commit
 public class RoleController {
     @Resource
     private RoleService roleService;

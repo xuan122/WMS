@@ -1,10 +1,8 @@
 package org.example.pojo;
 
-<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-=======
->>>>>>> dd1282c... first commit
+
 import java.util.Date;
 
 public class WmsUser implements java.io.Serializable {
@@ -15,20 +13,14 @@ public class WmsUser implements java.io.Serializable {
     private String email;
     private String phone;
     private String fixed_phone;
-<<<<<<< HEAD
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-=======
->>>>>>> dd1282c... first commit
     private Date create_time;
     private int login_times;
     private int deptId;
     private int roleId;
     private String remarks;
     private String password;
-<<<<<<< HEAD
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-=======
->>>>>>> dd1282c... first commit
     private Date modifyDate;
 
     public Date getModifyDate() {
