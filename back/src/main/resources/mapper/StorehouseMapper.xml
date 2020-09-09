@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.StorehouseMapper">
+    <select id="showStorehouse" resultType="org.example.pojo.Storehouse">
+        SELECT * FROM Storehouse AS s ,`type` AS t,`dept` AS d
+        WHERE s.`storeHouseDepartmentId` =d.`id`AND s.`storeHouseType`=t.`id`
+        <if test="storeHouseCode != null and storeHouseCode !=''">
+        and  s.storeHouseCode like concat ('%',#{storeHouseCode},'%')
+        </if>
+        <if test="storeHouseName != null and storeHouseName !=''">
+        and s.storeHouseName like concat ('%',#{storeHouseName},'%')
+        </if>
+        <if test="storeHouseDepartmentId!= 0">
+            and s.storeHouseDepartmentId =#{storeHouseDepartmentId}
+        </if>
+        <if test="storeHouseType!= 0">
+            and s.storeHouseType =#{storeHouseType}
+        </if>
+        limit #{page},#{pageSize}
+    </select>
+    <select id="getStorehouseById"  resultType="org.example.pojo.Storehouse">
+        select * from Storehouse where id =#{id}
+    </select>
+    <insert id="addStorehouse">
+        INSERT INTO storehouse(`storeHouseCode`,`storeHouseName`,`storeHouseDepartmentId`,
+        `storeHouseType`,`storeHouseDefault`,`storeHouseDisable`,`storeHouseFunction`,`leaseDate`,
+        `area`,`address`,`contacts`,`phone`,`creationDate`,`creationBy`)
+        VALUES(#{storeHouseCode},#{storeHouseName},#{storeHouseDepartmentId},#{storeHouseType},
+        #{storeHouseDefault},#{storeHouseDisable},#{storeHouseFunction},#{leaseDate},
+        #{area},#{address},#{contacts},#{phone},now(),#{creationBy})
+    </insert>
+    <update id="updateStorehouse">
+        UPDATE storehouse SET `storeHouseCode`=#{storeHouseCode},`storeHouseName`=#{storeHouseName},
+        `storeHouseDepartmentId`= #{storeHouseDepartmentId},`storeHouseType`= #{storeHouseType},
+        `storeHouseDefault`= #{storeHouseDefault},`storeHouseDisable`= #{storeHouseDisable},
+        `storeHouseFunction`=#{storeHouseFunction},`area`= #{area},`address`=#{address},
+        `contacts`=#{contacts},`phone`= #{phone},`modifyDaete`=NOW(),`modifyBy`=#{modifyBy}  WHERE id =#{id}
+    </update>
+    <delete id="deleteStorehouse">
+        delete from storehouse where id = #{id}
+    </delete>
+    <select id=" defaultStorehouse" resultType="org.example.pojo.Storehouse">
+        SELECT * FROM `storehouse` WHERE storeHouseDefault =1
+    </select>
+</mapper>

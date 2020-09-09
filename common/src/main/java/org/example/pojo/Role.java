@@ -1,13 +1,19 @@
 package org.example.pojo;
 
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+=======
+>>>>>>> dd1282c... first commit
 import java.util.Date;
 
 public class Role implements java.io.Serializable{
     private int id;
     private String roleName;
+<<<<<<< HEAD
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+=======
+>>>>>>> dd1282c... first commit
     private Date create_time;
     private String remarks;
 

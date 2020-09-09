@@ -42,7 +42,11 @@ public class swagger2 extends WebMvcConfigurationSupport {
     public void addResourceHandlers(ResourceHandlerRegistry registry){
         registry.addResourceHandler("/**")
                 .addResourceLocations("classpath:/static/");
+<<<<<<< HEAD
         registry.addResourceHandler("swagger-ui.html")
+=======
+        registry.addResourceHandler("/swagger-ui.html")
+>>>>>>> dd1282c... first commit
                 .addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
