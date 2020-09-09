@@ -41,7 +41,7 @@ public class ProductController {
         return responseData;
     }
 
-    @RequestMapping(value = "/add",method = RequestMethod.GET)
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ApiOperation(value = "添加产品")
     public Object insertPro(Product product){
         int i=productService.insertPro(product);
@@ -55,7 +55,7 @@ public class ProductController {
         }
         return responseData;
     }
-    @RequestMapping(value = "/modify",method = RequestMethod.GET)
+    @RequestMapping(value = "/modify",method = RequestMethod.PUT)
     @ApiOperation(value = "修改产品")
     public Object modifyPro(Product product){
         int i=productService.modifyPro(product);
@@ -69,7 +69,7 @@ public class ProductController {
         }
         return responseData;
     }
-    @RequestMapping(value = "/delete",method = RequestMethod.GET)
+    @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
     @ApiOperation(value = "删除产品")
     public Object deleteById(int id){
         int i=productService.deleteById(id);

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.example.mapper.PurchaseMapper">
+
+    <resultMap id="purchaseMap" type="org.example.pojo.Purchase">
+        <id property="id" column="id" />
+        <result property="purchaseCode" column="purchaseCode"/>
+        <result property="totalPrice" column="totalPrice"/>
+        <result property="type" column="type"/>
+        <result property="account" column="account"/>
+        <result property="returnGoods" column="returnGoods"/>
+        <result property="creationDate" column="creationDate"/>
+        <result property="creationBy" column="creationBy"/>
+        <association property="provider" javaType="Provider" resultMap="providerMap"></association>
+        <collection property="product" javaType="java.util.ArrayList" ofType="org.example.pojo.Product" resultMap="productMap"></collection>
+    </resultMap>
+    <resultMap id="productMap" type="org.example.pojo.Product">
+        <id property="productId" column="productId" />
+        <result property="productName" column="productName" />
+        <result property="productCode" column="productCode" />
+        <result property="productSpecifications" column="productSpecifications" />
+        <result property="unitPrice" column="unitPrice" />
+        <result property="unitName" column="unitName" />
+        <result property="count" column="count" />
+        <result property="totalPrice" column="PtotalPrice" />
+    </resultMap>
+    <resultMap id="providerMap" type="org.example.pojo.Provider">
+        <id property="providerId" column="providerId" />
+        <result property="providerCode" column="providerCode" />
+        <result property="providerName" column="providerName" />
+    </resultMap>
+
+    <select id="getPurchaseList" resultMap="purchaseMap">
+        SELECT p.*,pr.productName,pr.productId,pr.productSpecifications,(SELECT unitName FROM unit u WHERE u.unitId=pr.unitId) AS unitName,pr.unitPrice,pl.count,pl.totalPrice AS PtotalPrice,pro.providerCode,pro.providerName  FROM
+purchase p,purchaselist pl,product pr,provider pro
+WHERE p.id=pl.purchaseId AND pl.productId=pr.productId AND pro.providerId=p.providerId
+
+    </select>
+
+    <select id="selectOne" resultType="int">
+        SELECT id FROM purchase ORDER BY id DESC LIMIT 1
+    </select>
+
+    <insert id="insertPur" parameterType="org.example.pojo.Purchase">
+        INSERT INTO purchase
+            (`purchaseCode`,`providerId`,`totalPrice`,`type`,`account`,`returnGoods`,`creationDate`,`creationBy`)
+VALUES (#{purchaseCode},
+        #{providerId},
+        #{totalPrice},
+        #{type},
+        #{account},
+        #{returnGoods},
+        SYSDATE(),
+        #{creationBy});
+    </insert>
+
+    <update id="modify" parameterType="org.example.pojo.Purchase">
+        UPDATE purchase
+        <set>
+            <if test="productId!=0">
+                productId=#{productId},
+            </if>
+            <if test="count!=0">
+                count=#{count},
+            </if>
+            <if test="totalPrice!=0">
+                totalPrice=#{totalPrice},
+            </if>
+            <if test="providerId!=0">
+                providerId=#{providerId},
+            </if>
+            <if test="type!=0">
+                type,
+            </if>
+            <if test="account!=0">
+                account=#{account},
+            </if>
+            <if test="returnGoods!=0">
+                returnGoods=#{returnGoods},
+            </if>
+            modifyDate=SYSDATE(),
+            modifyBy =#{returnGoods}
+        </set>
+        <where>
+         id=#{id}
+         </where>
+    </update>
+    <update id="turnPurchase" parameterType="java.lang.Integer">
+        update purchase set returnGoods=2 where id=#{id}
+    </update>
+
+    <delete id="deleteById">
+      DELETE FROM purchase WHERE id=#{id}
+    </delete>
+</mapper>

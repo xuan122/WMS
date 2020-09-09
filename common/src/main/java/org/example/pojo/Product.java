@@ -6,20 +6,23 @@ import java.sql.Date;
 
 public class Product {
 
-    private int productId;
-    private String productName;
-    private String productCode;
-    private String contractorCode;
-    private String internalCode;
-    private String productSpecifications;
-    private int productType;
-    private int unitId;
-    private Float unitPrice;
-    private int packingType;
-    private Float weight;
-    private int upWarning;
-    private int downWarning;
-    private int providerId;
+    private int productId;//产品id
+    private String productName;//产品名称
+    private String productCode;//产品编码
+    private String contractorCode;//厂商编码
+    private String internalCode;//内部编码
+    private String productSpecifications;//产品规格
+    private int productType;//产品类别
+    private int unitId;//单位
+    private String unitName;//单位名
+    private Float unitPrice;//单价
+    private int count;//数量
+    private int totalPrice;//总额
+    private int packingType;//包装类型
+    private Float weight;//重量
+    private int upWarning;//预警上限
+    private int downWarning;//预警下限
+    private int providerId;//供应商id
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date creationDate;
     private int creationBy;
@@ -91,12 +94,36 @@ public class Product {
         this.unitId = unitId;
     }
 
+    public String getUnitName() {
+        return unitName;
+    }
+
+    public void setUnitName(String unitName) {
+        this.unitName = unitName;
+    }
+
     public Float getUnitPrice() {
         return unitPrice;
     }
 
     public void setUnitPrice(Float unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public int getPackingType() {

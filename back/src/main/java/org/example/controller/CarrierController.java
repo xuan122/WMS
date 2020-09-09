@@ -38,7 +38,7 @@ public class CarrierController {
         return responseData;
     }
 
-    @RequestMapping(value = "/addCarrier",method = RequestMethod.GET)
+    @RequestMapping(value = "/addCarrier",method = RequestMethod.POST)
     @ApiOperation(value = "添加承运商")
     public Object addCarrier(Carrier carrier){
         ResponseData responseData = new ResponseData();
@@ -53,7 +53,7 @@ public class CarrierController {
         return responseData;
     }
 
-    @RequestMapping(value = "/modifyCarrier",method = RequestMethod.GET)
+    @RequestMapping(value = "/modifyCarrier",method = RequestMethod.PUT)
     @ApiOperation(value = "修改承运商")
     public Object modifyCarrier(Carrier carrier){
         ResponseData responseData = new ResponseData();
@@ -67,7 +67,7 @@ public class CarrierController {
         }
         return responseData;
     }
-    @RequestMapping(value = "/deleteCarrier",method = RequestMethod.GET)
+    @RequestMapping(value = "/deleteCarrier",method = RequestMethod.DELETE)
     @ApiOperation(value = "删除承运商")
     public Object deleteCarrier(int id){
         ResponseData responseData = new ResponseData();

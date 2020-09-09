@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.example.mapper.TurnPurchaseMapper">
+
+    <insert id="insertTpurchase" parameterType="org.example.pojo.TurnPurchase">
+         INSERT INTO turnpurchase VALUES(DEFAULT,#{turnCode},#{purchaseId},#{count},#{totalPrice},SYSDATE(),#{creationBy})
+    </insert>
+
+    <select id="turnList" resultType="org.example.mapper.TurnPurchaseMapper">
+       SELECT tp.turnCode,p.purchaseCode,pr.productCode,pr.productName,pr.productSpecifications,(SELECT unitName FROM unit u WHERE u.unitId=pr.unitId) AS unitName,pr.unitPrice,tp.count,tp.totalPrice,pro.providerName,p.type
+FROM turnpurchase tp,purchase p,purchaselist pl,product pr,provider pro
+WHERE tp.purchaseId=p.id AND pl.purchaseId=p.id AND pl.productId=pr.productId AND pro.providerId=p.providerId
+    </select>
+
+</mapper>

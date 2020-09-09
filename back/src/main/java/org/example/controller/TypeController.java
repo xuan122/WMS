@@ -38,7 +38,7 @@ public class TypeController {
     }
 
     @ApiOperation(value = "添加分类")
-    @RequestMapping(value = "/addType",method = RequestMethod.GET)
+    @RequestMapping(value = "/addType",method = RequestMethod.POST)
     public Object insertType(Type type){
         int i=typeService.insert(type);
         ResponseData responseData=new ResponseData();
@@ -53,7 +53,7 @@ public class TypeController {
     }
 
     @ApiOperation(value = "删除分类")
-    @RequestMapping(value = "/deleteType",method = RequestMethod.GET)
+    @RequestMapping(value = "/deleteType",method = RequestMethod.DELETE)
     public Object deleteById(int id){
         int i=typeService.deleteById(id);
         ResponseData responseData=new ResponseData();
@@ -68,7 +68,7 @@ public class TypeController {
     }
 
     @ApiOperation(value = "修改分类")
-    @RequestMapping(value = "/modifyType",method = RequestMethod.GET)
+    @RequestMapping(value = "/modifyType",method = RequestMethod.PUT)
     public Object modifyById( Type type){
         int i=typeService.modifyById(type);
         ResponseData responseData=new ResponseData();
