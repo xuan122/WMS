@@ -5,6 +5,7 @@
          SELECT *FROM product
     </select>
 
+
     <select id="conditionQuery" resultType="org.example.pojo.Product">
         SELECT *FROM product
         <where>

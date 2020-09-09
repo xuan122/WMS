@@ -27,7 +27,7 @@ public class PurchaseService {
 
         return purchaseMapper.insertPur(purchase);
    }
-
+//
    public int modify(Purchase purchase){
        return purchaseMapper.modify(purchase);
    }

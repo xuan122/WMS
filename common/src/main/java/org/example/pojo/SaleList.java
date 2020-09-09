@@ -31,6 +31,7 @@ public class SaleList {
         this.productId = productId;
     }
 
+
     public int getCount() {
         return count;
     }

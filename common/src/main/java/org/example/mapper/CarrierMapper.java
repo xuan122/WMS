@@ -10,6 +10,7 @@ import java.util.List;
 public interface CarrierMapper {
     List<Carrier> getCarrierList();
 
+
     List<Carrier> queryByCodeAndName(@Param("carrierCode") String carrierCode,@Param("carrierName") String carrierName);
 
     int insertCarrier(Carrier carrier);

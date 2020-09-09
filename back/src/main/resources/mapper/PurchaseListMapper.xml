@@ -13,6 +13,7 @@ VALUES (#{productId},
         #{totalPrice});
 </insert>
 
+
     <delete id="deleteByPurchaseId">
         delete purchaselist from purchaseId=#{id}
     </delete>

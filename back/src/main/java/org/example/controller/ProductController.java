@@ -40,7 +40,7 @@ public class ProductController {
         responseData.setData(proList);
         return responseData;
     }
-
+//
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ApiOperation(value = "添加产品")
     public Object insertPro(Product product){

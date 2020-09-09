@@ -6,6 +6,7 @@
         SELECT t1.*,t2.statusName AS parentName FROM TYPE t1,TYPE t2 WHERE t1.statusType='PRO_CLASS' AND t1.parentId=t2.id
     </select>
 
+
     <select id="selectByCodeAndName"  resultType="org.example.pojo.Type">
         SELECT * FROM TYPE
         <where>

@@ -12,6 +12,7 @@ public interface TypeMapper {
 
      List<Type> selectByCodeAndName(@Param("statusCode") String statusCode,@Param("statusName") String statusName);
 
+
      int insert(Type type);
 
      int deleteById(int id);

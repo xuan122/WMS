@@ -7,5 +7,6 @@ import org.example.pojo.PurchaseList;
 public interface PurchaseListMapper {
     int insert(PurchaseList purchaseList);
 
+
     int deleteByPurchaseId(int id);
 }

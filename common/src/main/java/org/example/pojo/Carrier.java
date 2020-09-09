@@ -14,6 +14,7 @@ public class Carrier {
         this.id = id;
     }
 
+
     public String getCarrierCode() {
         return carrierCode;
     }

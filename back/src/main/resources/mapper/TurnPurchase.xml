@@ -6,6 +6,7 @@
          INSERT INTO turnpurchase VALUES(DEFAULT,#{turnCode},#{purchaseId},#{count},#{totalPrice},SYSDATE(),#{creationBy})
     </insert>
 
+
     <select id="turnList" resultType="org.example.mapper.TurnPurchaseMapper">
        SELECT tp.turnCode,p.purchaseCode,pr.productCode,pr.productName,pr.productSpecifications,(SELECT unitName FROM unit u WHERE u.unitId=pr.unitId) AS unitName,pr.unitPrice,tp.count,tp.totalPrice,pro.providerName,p.type
 FROM turnpurchase tp,purchase p,purchaselist pl,product pr,provider pro

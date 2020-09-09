@@ -12,7 +12,7 @@ public class ProductService {
 
     @Resource
     ProductMapper productMapper;
-
+//
    public List<Product> selectProduct(){
 
        return productMapper.selectProduct();

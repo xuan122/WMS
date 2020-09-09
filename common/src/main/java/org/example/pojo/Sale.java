@@ -3,6 +3,7 @@ package org.example.pojo;
 import java.sql.Date;
 
 public class Sale {
+
     private int id;
     private String saleCode;
     private int customerId;

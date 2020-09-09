@@ -11,6 +11,7 @@ public interface PurchaseMapper {
 
     int selectOne();
 
+
     int insertPur(Purchase purchase);
 
     int modify(Purchase purchase);

@@ -26,7 +26,7 @@ public class TypeController {
         responseData.setData(typeService.selectList());
         return responseData;
     }
-
+//
     @ApiOperation(value = "条件查询分类")
     @RequestMapping(value = "/queryType",method = RequestMethod.GET)
     public Object selectByCodeAndName(String statusCode,String statusName){

@@ -122,6 +122,7 @@ public class Product {
         return totalPrice;
     }
 
+
     public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
     }

@@ -16,6 +16,7 @@ public class customer {
     private Date modifyDate;
     private int modifyBy;
 
+
     public int getId() {
         return id;
     }

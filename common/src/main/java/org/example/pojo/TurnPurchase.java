@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 public class TurnPurchase {
+
     private int id;
     private String turnCode;
     private int purchaseId;

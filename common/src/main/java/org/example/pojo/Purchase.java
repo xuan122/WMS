@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.util.List;
 
 public class Purchase {
+
     private int id;
     private String purchaseCode;
     private int providerId;

@@ -11,7 +11,7 @@ public class PurchaseListService {
 
     @Resource
     private PurchaseListMapper purchaseListMapper;
-
+//
     public int insert(PurchaseList purchaseList){
         return purchaseListMapper.insert(purchaseList);
     }

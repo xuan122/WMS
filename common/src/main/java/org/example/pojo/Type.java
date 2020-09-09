@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.sql.Date;
 
+
 public class Type implements java.io.Serializable{
     private int id;
     private String statusCode;

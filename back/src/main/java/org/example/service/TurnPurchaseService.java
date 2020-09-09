@@ -14,7 +14,7 @@ public class TurnPurchaseService {
     private TurnPurchaseMapper turnPurchaseMapper;
 
     public int insertTpurchase(TurnPurchase turnPurchase){
-
+//
         return turnPurchaseMapper.insertTpurchase(turnPurchase);
     }
 

@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 public class CreationCode {
+
     public String Code(){
         StringBuffer str=new StringBuffer();
         SimpleDateFormat formatter= new SimpleDateFormat("yyyyMMddHHmmssSSS");

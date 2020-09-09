@@ -10,6 +10,7 @@ import java.util.List;
 public interface ProductMapper {
        List<Product> selectProduct();
 
+
        List<Product> conditionQuery(@Param("productCode") String productCode,@Param("productName") String productName);
 
        int insertPro(Product product);

@@ -10,5 +10,6 @@ public interface TurnPurchaseMapper {
 
     List<TurnPurchase> turnList();
 
+
     int insertTpurchase(TurnPurchase turnPurchase);
 }

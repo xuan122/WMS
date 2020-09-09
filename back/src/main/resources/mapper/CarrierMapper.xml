@@ -21,6 +21,7 @@
         INSERT INTO carrier VALUES(DEFAULT,#{carrierCode},#{carrierName},#{remarks})
     </insert>
 
+
     <update id="modifyCarrier" parameterType="org.example.pojo.Carrier">
     UPDATE carrier
   <set>

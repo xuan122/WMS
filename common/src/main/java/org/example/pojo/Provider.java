@@ -17,6 +17,7 @@ public class Provider {
     private Date modifyDate;
     private int modifyBy;
 
+
     public int getProviderId() {
         return providerId;
     }

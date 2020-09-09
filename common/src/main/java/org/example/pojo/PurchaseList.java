@@ -7,6 +7,7 @@ public class PurchaseList {
     private int count;
     private Float totalPrice;
 
+
     public int getId() {
         return id;
     }
