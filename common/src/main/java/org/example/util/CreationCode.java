@@ -10,7 +10,7 @@ public class CreationCode {
         SimpleDateFormat formatter= new SimpleDateFormat("yyyyMMddHHmmssSSS");
         Date date = new Date(System.currentTimeMillis());
         str.append(formatter.format(date));
-        str.append((int)(Math.random()*1000)+1);
+        str.append((int)(Math.random()*900)+100);
         String i=str.toString();
         return i;
     }

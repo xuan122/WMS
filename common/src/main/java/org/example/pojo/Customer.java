@@ -2,7 +2,7 @@ package org.example.pojo;
 
 import java.sql.Date;
 
-public class customer {
+public class Customer {
     private int id;
     private String customerCode;
     private String customerName;

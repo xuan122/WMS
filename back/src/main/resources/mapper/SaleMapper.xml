@@ -1,7 +1,77 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.example.mapper">
+<mapper namespace="org.example.mapper.SaleMapper">
+    <resultMap id="saleMap" type="org.example.pojo.Sale">
+        <id property="id" column="id" />
+        <result property="saleCode" column="saleCode" />
+        <result property="customerId" column="customerId" />
+        <result property="status" column="status" />
+        <result property="account" column="account" />
+        <result property="returnGoods" column="returnGoods" />
+        <result property="turnCount" column="turnCount" />
+        <result property="creationDate" column="creationDate" />
+        <result property="creationBy" column="creationBy" />
+        <result property="modifyDate" column="modifyDate" />
+        <result property="modifyBy" column="modifyBy" />
+        <association property="customer" javaType="Customer" resultMap="cuMap"></association>
+        <collection property="proList" javaType="java.util.ArrayList" ofType="org.example.pojo.Product" resultMap="proMap"></collection>
+    </resultMap>
+
+    <resultMap id="proMap" type="org.example.pojo.Product">
+        <id property="productId" column="productId" />
+        <result property="productName" column="productName" />
+        <result property="productCode" column="productCode" />
+        <result property="productSpecifications" column="productSpecifications" />
+        <result property="unitPrice" column="unitPrice" />
+        <result property="unitName" column="unitName" />
+        <result property="count" column="count" />
+        <result property="totalPrice" column="PtotalPrice" />
+    </resultMap>
+
+    <resultMap id="cuMap" type="org.example.pojo.Customer">
+        <id property="id" column="cid" />
+        <result property="customerCode" column="customerCode" />
+        <result property="customerName" column="customerName" />
+    </resultMap>
+
+    <select id="getSaleList" resultMap="saleMap">
+     SELECT s.*,c.id AS cid,c.customerCode,c.customerName,p.productId,p.productName,p.productCode,p.productSpecifications,(SELECT unitName FROM unit u WHERE u.unitId=p.unitId) AS unitName,p.unitPrice,sl.count,sl.totalPrice as PtotalPrice
+FROM sale s,customer c,salelist sl,product p
+WHERE s.customerId=c.id AND s.id=sl.saleId AND sl.productId=p.productId
 
 
+    </select>
 
+    <select id="selectOne" resultType="int">
+        SELECT id FROM sale ORDER BY id DESC LIMIT 1
+    </select>
+
+    <insert id="insertSale" parameterType="org.example.pojo.Sale">
+        INSERT INTO sale
+            (`saleCode`,
+             `customerId`,
+             `status`,
+             `account`,
+             `returnGoods`,
+             `turnCount`,
+             `creationDate`,
+             `creationBy`)
+VALUES (#{saleCode},
+        #{customerId},
+        #{status},
+        #{account},
+        #{returnGoods},
+        #{turnCount},
+        SYSDATE(),
+        #{creationBy});
+    </insert>
+    <delete id="deleteByid" parameterType="int">
+        delete from sale where id=#{id}
+    </delete>
+
+    <update id="returnGoods" parameterType="int">
+        UPDATE sale
+SET returnGoods=3
+WHERE id=#{id}
+    </update>
 </mapper>

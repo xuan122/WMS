@@ -1,6 +1,7 @@
 package org.example.pojo;
 
 import java.sql.Date;
+import java.util.List;
 
 public class Sale {
 
@@ -15,6 +16,8 @@ public class Sale {
     private int creationBy;
     private Date modifyDate;
     private int modifyBy;
+    private List<Product> proList;
+    private Customer customer;
 
     public int getId() {
         return id;
@@ -102,5 +105,21 @@ public class Sale {
 
     public void setModifyBy(int modifyBy) {
         this.modifyBy = modifyBy;
+    }
+
+    public List<Product> getProList() {
+        return proList;
+    }
+
+    public void setProList(List<Product> proList) {
+        this.proList = proList;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }
